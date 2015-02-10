@@ -1,3 +1,4 @@
-# Learning
-Source code and Makefile files for the learnign of some aspectes of language, compilation and linking.
-line added in in master
+# rn%ingS
+oe co%de and M%a%ile filesor te le%arnign of some aspes of %language, compil%an and lig.
+line aed in master%
+% and delteio made master
