@@ -1,3 +1,4 @@
-# Learning
-Source code and Makefile files for the learnign of some aspectes of language, compilation and linking.
-line added in in master
+$# Learnin$g
+$Source  and Makefi$le files  the learnign of some aspectes of langu$age, compilation and linking.
+ added  in mast$er
+li$ne deletions and $ added in branch2
