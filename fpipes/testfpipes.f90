@@ -1,5 +1,7 @@
-! Main program 
-!
+! Main program for testing mfpipes module
+! gnuplot 4.6 patchlevel 4 was used on Ubuntu 14.04 for this test
+! it can be obtained using the following comands
+! sudo apt-get install gnuplot gnuplot-x11
 program testfpipes
   use mfpipes 
   implicit none
