@@ -1,0 +1,9 @@
+set xlabel 'T[K]'
+set ylabel 'P[Pa]'
+set title 'argumento identificando composição global'
+set key right bottom
+set logscale y 10
+set format y '10^{%L}'
+set terminal wxt enhanced
+plot 'thisplot.dat' every ::1 using ($5):($6) title 'argumento identificando fase incipiente' with lines lt 2 lw 2 lc rgb 'red'
+q
