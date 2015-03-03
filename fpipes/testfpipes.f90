@@ -13,6 +13,7 @@ program testfpipes
   type(streampointer) :: fp
   character(len=99) :: paused
   integer :: ios
+  integer :: col1, col2
 
   
   mode='w' !'r'
@@ -61,18 +62,34 @@ print*, 'Opened pipe successfully'
 !print*, c_associated(fprintf(fp%handle, c_char_"libreoffice"//C_NULL_CHAR))
 !stop
 
-  ios = fprintf(fp%handle,c_char_"set xlabel 'T[K]'"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,c_char_"set ylabel 'P[Pa]'"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"set title 'argumento identificando composição global'"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"set key right bottom"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"set logscale y 10"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"set format y '10^{%%L}'"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"set terminal wxt enhanced"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,c_char_"set xlabel 'T[K]'"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,c_char_"set ylabel 'P[Pa]'"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,"set title 'argumento identificando composição global'"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,"set key right bottom"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,"set logscale y 10"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,"set format y '10^{%%L}'"//char(10)//C_NULL_CHAR)
+   ios = fprintf(fp%handle,"set terminal wxt enhanced"//char(10)//C_NULL_CHAR)
 print*,;print*, "Shall we plot the sample plot?"
 read(*,*) paused
 print*,;print*, "I'm plotting anyway."
-  ios = fprintf(fp%handle,"plot 'thisplot.dat' every ::1 using ($"//"5"//"):($"//"6"// &
+col1=5
+col2=6
+   ios = fprintf(fp%handle,"plot 'thisplot.dat' every ::1 using ($"//trim(int2str(col1))//"):($"//trim(int2str(col2))// &
   ") title 'argumento identificando fase incipiente' with lines lt 2 lw 2 lc rgb 'red'"//char(10)//C_NULL_CHAR)
-  ios = fprintf(fp%handle,"q"//char(10)//C_NULL_CHAR)
-  ios = pclose(fp%handle)
+   ios = fprintf(fp%handle,"q"//char(10)//C_NULL_CHAR)
+   ios = pclose(fp%handle)
+   
+   contains
+   
+  !=================================================================================================
+  
+  elemental function int2str( i ) result( str )
+    integer, intent(in) :: i
+    character(256) :: str
+    write(str,*) i
+    str = adjustl(str)
+  end function int2str
+  
+  !=================================================================================================
+  
 end program testfpipes
