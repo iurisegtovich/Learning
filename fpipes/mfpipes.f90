@@ -1,10 +1,15 @@
 !source: http://www.44342.com/fortran-f849-t9703-p1.htm
 module mfpipes
+  
   use, intrinsic :: ISO_C_BINDING
+  
+  !=================================================================================================
   
   type, public :: streampointer
     type (c_ptr) :: handle = c_null_ptr
   end type streampointer
+  
+  !=================================================================================================
   
 ! popen  
   interface
@@ -15,6 +20,8 @@ module mfpipes
     end function
   end interface
   
+  !=================================================================================================
+  
 ! fopen  
   interface
     function fopen(path, mode) bind(C, name='fopen')
@@ -23,6 +30,8 @@ module mfpipes
       character(kind=c_char), dimension(*) :: path, mode
     end function
   end interface
+  
+  !=================================================================================================
   
 ! fgets  
   interface
@@ -35,6 +44,8 @@ module mfpipes
     end function
   end interface
   
+  !=================================================================================================
+  
 ! pclose  
   interface
     function pclose(handle) bind(C, name='pclose')
@@ -43,6 +54,8 @@ module mfpipes
     type (c_ptr), value :: handle
     end function
   end interface
+  
+  !=================================================================================================
   
 ! fprintf  
   interface
@@ -53,5 +66,7 @@ module mfpipes
       character(kind=c_char), dimension(*) :: string
     end function
   end interface
+  
+  !=================================================================================================
   
 end module mfpipes
