@@ -9,6 +9,3 @@ f2.elf: f2.f90
 	
 f3.elf: f3.f90
 	gfortran -cpp f3.f90 -o f3.elf
-	
-f4.elf: f4.f90
-	gfortran -cpp f4.f90 -o f4.elf
